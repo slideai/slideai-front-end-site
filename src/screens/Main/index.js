@@ -6,6 +6,7 @@ class Main extends Component {
     return (
       <div className="main-container">
         <img src={require('../../assets/logo_transparent_cutted.png')} className="logo" />
+        
         <form>
           <input type="text" placeholder="Tema" />
           <input type="text" placeholder="Prefixo (A história de, O que é, etc.)" />
@@ -29,6 +30,10 @@ class Main extends Component {
           <input type="number" placeholder="Número de Slides (max 20)" />
           <input type="submit" value="Criar" />
         </form>
+
+        <footer>
+          <p>Made by <a href="https://windows87.github.io/">Yuri Faria</a> and <a href="https://github.com/LeoFC97">Leonardo Costa</a></p>
+        </footer>
       </div>
     );
   }

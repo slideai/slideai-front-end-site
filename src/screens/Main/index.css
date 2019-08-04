@@ -24,3 +24,13 @@
   width: 80%;
   max-width: 500px;
 }
+
+footer p {
+  color: white;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  font-weight: bold;
+}
