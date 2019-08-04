@@ -3,8 +3,9 @@ import backendUrl from '../config/backendUrl';
 function postSlide({ searchTerm, prefix, author, font, lang, numberOfSlides }) {
   const body = JSON.stringify({ searchTerm, prefix, author, font, lang, numberOfSlides });
   return new Promise(async (next, reject) => {
+    console.log(backendUrl)
   	try {
-      const call = await fetch(`${backendUrl}/api/slides/`, {
+      const call = await fetch(`${backendUrl}/slides`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
