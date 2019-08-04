@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Loading from '../../components/Loading';
+import download from 'downloadjs';
 import './index.css';
 
 import selectTextByLanguage from '../../utils/selectTextByLanguage';
+import backendUrl from '../../config/backendUrl';
+import { postSlide } from '../../utils/slideRequests';
 
 class Main extends Component {
   state = {
@@ -25,15 +28,26 @@ class Main extends Component {
   	this.setState(obj);
   }
 
-  onFormSubmit = e => {
+  onFormSubmit = async e => {
   	e.preventDefault();
 
+  	const { searchTerm, prefix, font, lang, numberOfSlides } = this.state;
   	const error = this.validateFields();
+
+  	console.log(error);
 
   	if(error)
   	  return this.setState({ error });
 
   	this.setState({ error: '', loading: true });
+
+  	try {
+  	  const slideId = await postSlide({ searchTerm, prefix, font, lang, numberOfSlides });
+  	  download(`${backendUrl}/slides/${slideId}.pptx`);
+  	  this.cleanFields();
+  	} catch(error) {
+  	  this.setState({ error: selectTextByLanguage(error), loading: false });
+  	}
   }
 
   validateFields = () => {
@@ -53,6 +67,10 @@ class Main extends Component {
 
     if(!numberOfSlides)
       return selectTextByLanguage('Type number of slides');
+  }
+
+  cleanFields = () => {
+    this.setState({ searchTerm: '', prefix: '', author: '', font: '', lang: '', numberOfSlides: '', loading: false });
   }
 
   render() {

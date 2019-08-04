@@ -14,7 +14,10 @@ const texts = {
   "Select language": "Select language",
   "Type number of slides": "Type number of slides",
   "Made by": "Made by",
-  "and": "and"
+  "and": "and",
+  "Connection error": "Connection error",
+  "search term missing": "Type slide theme",
+  "number of slides exceeded the limit": "Number of slides exceeded the limit"
 };
 
 export default texts;
