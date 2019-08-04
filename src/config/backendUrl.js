@@ -1,2 +1,2 @@
-const backendUrl = 'http://localhost:3333';
+const backendUrl = 'https://slide-ai-backend.herokuapp.com/';
 export default backendUrl;
