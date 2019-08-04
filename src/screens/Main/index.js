@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../components/Loading';
 import './index.css';
 
 import selectTextByLanguage from '../../utils/selectTextByLanguage';
@@ -11,7 +12,8 @@ class Main extends Component {
   	font: '',
   	lang: '',
   	numberOfSlides: '',
-  	error: ''
+  	error: '',
+  	loading: false
   };
 
   onInputChange = e =>  {
@@ -31,7 +33,7 @@ class Main extends Component {
   	if(error)
   	  return this.setState({ error });
 
-  	this.setState({ error: '' });
+  	this.setState({ error: '', loading: true });
   }
 
   validateFields = () => {
@@ -55,7 +57,7 @@ class Main extends Component {
 
   render() {
   	const { onInputChange, onFormSubmit, state } = this;
-  	const { searchTerm, prefix, author, font, lang, numberOfSlides, error } = state;
+  	const { searchTerm, prefix, author, font, lang, numberOfSlides, error, loading } = state;
 
     return (
       <div className="main-container">
@@ -84,7 +86,8 @@ class Main extends Component {
           </select>
 
           <input type="number" placeholder={selectTextByLanguage('Number of Slides (maximum 20)')} name="numberOfSlides" onChange={onInputChange} value={numberOfSlides} />
-          <input type="submit" value={selectTextByLanguage('Create')} />
+          { !loading ? <input type="submit" value={selectTextByLanguage('Create')} /> : null }
+          { loading ? <Loading /> : null }
         </form>
 
         <footer>
