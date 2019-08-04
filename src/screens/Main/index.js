@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
+const postOnApi = require('../../utils/postOnApi')
+
+
 
 class Main extends Component {
   render() {
@@ -28,7 +31,8 @@ class Main extends Component {
           </select>
 
           <input type="number" placeholder="Número de Slides (max 20)" />
-          <input type="submit" value="Criar" />
+          <input onClick={console.log('a')} type="submit" value="Criar" />
+
         </form>
 
         <footer>
