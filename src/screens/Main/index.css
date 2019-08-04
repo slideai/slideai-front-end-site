@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+.main-container form .error {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
 .main-container form input, .main-container form select {
   width: 80%;
   max-width: 500px;

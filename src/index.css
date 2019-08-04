@@ -33,12 +33,21 @@ input[type="text"], input[type="number"], input[type="submit"], select {
   font-family: Comfortaa;
   background-color: white;
   color: gray;
+  transition: 1s all;
 }
 
 input[type="submit"] {
   height: 30px;
   color: white;
   background-color: var(--secondary-color);
+}
+
+input:focus, select:focus {
+  filter: brightness(85%);
+}
+
+input:hover, select:hover {
+  filter: brightness(85%);
 }
 
 *:focus {
