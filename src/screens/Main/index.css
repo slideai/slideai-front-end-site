@@ -1,0 +1,36 @@
+.main-container {
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 200px;
+  margin: 12px;
+}
+
+.main-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container form input, .main-container form select {
+  width: 80%;
+  max-width: 500px;
+}
+
+footer p {
+  color: white;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  font-weight: bold;
+}
