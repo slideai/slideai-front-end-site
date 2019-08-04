@@ -10,7 +10,8 @@ class Main extends Component {
   	author: '',
   	font: '',
   	lang: '',
-  	numberOfSlides: ''
+  	numberOfSlides: '',
+  	error: ''
   };
 
   onInputChange = e =>  {
@@ -26,10 +27,15 @@ class Main extends Component {
   	e.preventDefault();
 
   	const error = this.validateFields();
+
+  	if(error)
+  	  return this.setState({ error });
+
+  	this.setState({ error: '' });
   }
 
   validateFields = () => {
-    const { searchTerm, prefix, author, font, lang, numberOfSlides } = this.state;
+    const { searchTerm, prefix, font, lang, numberOfSlides } = this.state;
     
     if(!searchTerm)
       return selectTextByLanguage('Type slide theme');
@@ -49,13 +55,15 @@ class Main extends Component {
 
   render() {
   	const { onInputChange, onFormSubmit, state } = this;
-  	const { searchTerm, prefix, author, font, lang, numberOfSlides } = state;
+  	const { searchTerm, prefix, author, font, lang, numberOfSlides, error } = state;
 
     return (
       <div className="main-container">
         <img src={require('../../assets/logo_transparent_cutted.png')} className="logo" alt="SlideAI Logo" />
         
         <form onSubmit={onFormSubmit}>
+          { error ? <p className="error">{error}</p> : null }
+
           <input type="text" placeholder={selectTextByLanguage('Slide theme')} name="searchTerm" onChange={onInputChange} value={searchTerm} />
           <input type="text" placeholder={selectTextByLanguage('Prefix (the history of, what is, etc.)')} name="prefix" onChange={onInputChange} value={prefix} />
           <input type="text" placeholder={selectTextByLanguage('Author(s)')} name="author" onChange={onInputChange} value={author} />
