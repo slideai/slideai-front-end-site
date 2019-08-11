@@ -31,7 +31,7 @@ class Main extends Component {
   onFormSubmit = async e => {
   	e.preventDefault();
 
-  	const { searchTerm, prefix, font, lang, numberOfSlides } = this.state;
+  	const { author,searchTerm, prefix, font, lang, numberOfSlides } = this.state;
   	const error = this.validateFields();
 
   	console.log(error);
@@ -42,7 +42,7 @@ class Main extends Component {
   	this.setState({ error: '', loading: true });
 
   	try {
-  	  const slideId = await postSlide({ searchTerm, prefix, font, lang, numberOfSlides });
+  	  const slideId = await postSlide({ author, searchTerm, prefix, font, lang, numberOfSlides });
   	  download(`${backendUrl}/slides/${slideId}.pptx`);
   	  this.cleanFields();
   	} catch(error) {
